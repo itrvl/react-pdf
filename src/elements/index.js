@@ -8,6 +8,7 @@ import Image from './Image';
 import Document from './Document';
 import Canvas from './Canvas';
 import TextInstance from './TextInstance';
+import Svg from './Svg';
 
 const constructors = {
   ROOT: Root,
@@ -17,6 +18,7 @@ const constructors = {
   VIEW: View,
   NOTE: Note,
   IMAGE: Image,
+  SVG: Svg,
   CANVAS: Canvas,
   DOCUMENT: Document,
   TEXT_INSTANCE: TextInstance,

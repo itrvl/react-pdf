@@ -38,6 +38,7 @@
     "react": "^16.8.6",
     "react-reconciler": "^0.20.4",
     "scheduler": "^0.14.0",
+    "svg-to-pdfkit": "^0.1.7",
     "yoga-layout-prebuilt": "^1.9.3"
   },
   "devDependencies": {
