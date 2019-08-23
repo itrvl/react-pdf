@@ -26,12 +26,16 @@ class Svg extends Base {
     };
   }
   async render() {
-    const doc = this.root.instance;
+    this.root.instance.save();
     const layout = this.getAbsoluteLayout();
-    SVGtoPDF(doc, this.props.content, layout.left, layout.top);
-    if (this.props.debug) {
-      this.debug();
-    }
+    SVGtoPDF(
+      this.root.instance,
+      this.props.content,
+      layout.left,
+      layout.top,
+      this.props.svgToPdfOptions,
+    );
+    if (this.props.debug) this.debug();
     this.root.instance.restore();
   }
 }
