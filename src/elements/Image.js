@@ -4,6 +4,7 @@ import Base from './Base';
 import warning from '../utils/warning';
 import { resolveImage } from '../utils/image';
 import { resolveObjectFit } from '../utils/objectFit';
+import { setDestination } from '../utils/url';
 
 const SAFETY_HEIGHT = 10;
 
@@ -160,9 +161,7 @@ class Image extends Base {
       } else {
         warning(
           false,
-          `Image with src '${
-            this.props.src
-          }' skipped due to invalid dimensions`,
+          `Image with src '${this.props.src}' skipped due to invalid dimensions`,
         );
       }
     }
@@ -171,6 +170,7 @@ class Image extends Base {
   }
 
   async render() {
+    setDestination(this);
     this.root.instance.save();
     this.applyTransformations();
     this.drawBackgroundColor();

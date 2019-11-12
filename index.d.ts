@@ -17,17 +17,17 @@ declare module '@react-pdf/renderer' {
       flexGrow?: number,
       flexShrink?: number,
       flexBasis?: number,
-      justifyContent?: 'space-around' | 'space-between',
+      justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-around' | 'space-between' | 'space-evenly',
       order?: number,
 
       // Layout?:never,
 
       bottom?: number | string,
       display?: 'flex' | 'none',
-      left?: number,
+      left?: number | string,
       position?: 'absolute' | 'relative',
-      right?: number,
-      top?: number,
+      right?: number | string,
+      top?: number | string,
 
       // Dimension?:never,
 
@@ -46,15 +46,15 @@ declare module '@react-pdf/renderer' {
 
       // Text?:never,
 
-      fontSize?: number,
+      fontSize?: number | string,
       fontFamily?: string,
       fontStyle?: string | 'normal',
       fontWeight?: number | 'thin' | 'hairline' | 'ultralight' | 'extralight' | 'light' | 'normal' | 'medium' | 'semibold' | 'demibold' | 'bold' | 'ultrabold' | 'extrabold' | 'heavy' | 'black',
-      letterSpacing?: number, //?
-      lineHeight?: number,
+      letterSpacing?: number | string,
+      lineHeight?: number | string,
       maxLines?: number, //?
-      textAlign?: 'left' | 'right', //?
-      textDecoration?: 'line-through' | 'underline',
+      textAlign?: 'left' | 'right' | 'center' | 'justify', //?
+      textDecoration?: 'line-through' | 'underline' | 'none',
       textDecorationColor?: string,
       textDecorationStyle?: "dashed" | "dotted" | "solid" | string, //?
       textIndent?: any, //?
@@ -95,11 +95,14 @@ declare module '@react-pdf/renderer' {
       // Borders?:never,
 
       border?: number | string,
+      borderWidth?: number,
+      borderColor?: string,
+      borderStyle?: "dashed" | "dotted" | "solid",
       borderTop?: number | string,
       borderTopColor?: string,
       borderTopStyle?: "dashed" | "dotted" | "solid", // ?
       borderTopWidth?: number | string,
-      borderRight?: never,
+      borderRight?: number | string,
       borderRightColor?: string,
       borderRightStyle?: "dashed" | "dotted" | "solid", //?
       borderRightWidth?: number | string,
@@ -115,6 +118,7 @@ declare module '@react-pdf/renderer' {
       borderTopRightRadius?: number | string,
       borderBottomRightRadius?: number | string,
       borderBottomLeftRadius?: number | string,
+      borderRadius?: number | string
     }
 
     interface Styles {
@@ -154,6 +158,11 @@ declare module '@react-pdf/renderer' {
        * @see https://react-pdf.org/advanced#page-breaks
        */
       break?: boolean;
+      /**
+       * Hint that no page wrapping should occur between all sibling elements following the element within n points
+       * @see https://react-pdf.org/advanced#orphan-&-widow-protection
+       */
+      minPresenceAhead?: number;
     }
 
     interface PageProps extends NodeProps {
@@ -244,6 +253,16 @@ declare module '@react-pdf/renderer' {
        * How much hyphenated breaks should be avoided.
        */
       hyphenationCallback?: number;
+      /**
+       * Specifies the minimum number of lines in a text element that must be shown at the bottom of a page or its container.
+       * @see https://react-pdf.org/advanced#orphan-&-widow-protection
+       */
+      orphans?: number
+      /**
+       * Specifies the minimum number of lines in a text element that must be shown at the top of a page or its container..
+       * @see https://react-pdf.org/advanced#orphan-&-widow-protection
+       */
+      widows?: number
     }
 
     /**
