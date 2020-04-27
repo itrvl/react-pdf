@@ -174,6 +174,7 @@ class Document {
         {
           pageNumber: j + 1,
           totalPages: this.subpages.length,
+          pages: this.subpages,
         },
         node => node.name === 'Text',
       );
